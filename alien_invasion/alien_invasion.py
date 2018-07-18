@@ -1,16 +1,27 @@
-filename = 'pi_digits.txt'
-with open(filename) as file_object:
-    #contents = file_object.read()
-    #print(contents.rstrip())
-    for line in file_object:
-        print(line.rstrip())
+import sys
+import pygame
+
+def run_game():
+    # 初始化游戏并创建一个屏幕对象
+    pygame.init()
+    screen = pygame.display.set_mode((1200, 800))
+    pygame.display.set_caption("Alien Invasion")
+    
+    # 设置背景色
+    bg_color = (230, 230, 230)
+
+    # 开始游戏的主循环
+    while True:
         
-with open(filename) as file_object:
-    lines = file_object.readlines()
-for line in lines:
-    print(line.rstrip())
-pi_string = ''
-for line in lines:
-    pi_string += line.strip()
-print(pi_string)
-print(len(pi_string))
+        # 监视键盘和鼠标事件
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+        
+        # 每次循环时都重绘屏幕
+        screen.fill(bg_color)
+        
+        # 让最近绘制的屏幕可见
+        pygame.display.flip()
+
+run_game()
