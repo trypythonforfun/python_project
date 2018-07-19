@@ -3,6 +3,9 @@ class GameStats():
     def __init__(self, ai_settings):
         """初始化统计信息"""
         self.ai_settings = ai_settings
+        # 游戏刚启动时处于活动状态
+        self.game_active = True
+
         self.reset_stats()
     
     def reset_stats(self):
