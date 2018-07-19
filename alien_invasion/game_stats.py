@@ -5,6 +5,8 @@ class GameStats():
         self.ai_settings = ai_settings
         # 游戏刚启动时处于活动状态
         self.game_active = False
+        # 在任何情况下都不应重置最高得分
+        self.high_score = 0
 
         self.reset_stats()
     
