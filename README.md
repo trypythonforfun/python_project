@@ -1,10 +1,10 @@
 # python_project
 
-### ?‹«
+### ç¯
 .Python 3.5.2 (default, Nov 23 2017, 16:37:01) 
 .pip 8.1.1 from /usr/lib/python3/dist-packages (python 3.5)
 
 
-### •¶Œ?¬
-.test_slice ‘ã?•Ğ’iC‰Â?—p
-.alien_invasion ŠO¯l“üNH’ö
+### æ–‡ä»¶æ„æˆ
+.test_slice å¯å¤ç”¨ä»£ç ç‰‡æ®µ
+.alien_invasion å¤–æ˜Ÿäººå…¥ä¾µå·¥ç¨‹
