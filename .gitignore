@@ -5,11 +5,5 @@ Desktop.ini
 
 # Python:
 *.py[cod]
-*.so
-*.egg
-*.egg-info
-build
+__pycache__
 
-# My configurations:
-db.ini
-deploy_key_rsa
