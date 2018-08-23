@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="referrer" content="origin" />
+<title>Python 文件操作 - nancy05 - 博客园</title>
+<meta property="og:description" content="文件操作三部曲：打开 -&gt; 操作 -&gt; 关闭。 一. 文件操作, 常用的几种模式： 如果打开文件，没有指定操作方式，默认是读取； 对于r/r+，如果文件不存在会报错，使用时需要保证文件存在" />
+<link type="text/css" rel="stylesheet" href="/bundles/blog-common.css?v=PX31qVjOE47mNaZI9JUSFK-ajuzMnpXA9PeteRNR1Qw1"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="/skins/red_autumnal_leaves/bundle-red_autumnal_leaves.css?v=EDEp2d1uMe8iyN6qDoW8MQgYb-JCFIeiYP0oX3XiiRM1"/>
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/red_autumnal_leaves/bundle-red_autumnal_leaves-mobile.css?v=d9LctKHRIQp9rreugMcQ1-UJuq_j1fo0GZXTXj8Bqrk1"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/nancyzhu/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/nancyzhu/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/nancyzhu/wlwmanifest.xml"/>
+<script src="//common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">var currentBlogApp = 'nancyzhu', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="/bundles/blog-common.js?v=w2D0zuehxVgBdOK-6kdFo4nejhiGJgr9HMJCp447Xc81" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="https://www.cnblogs.com/nancyzhu/"><img id="blogLogo" src="/home/hcuuser/BeautifulPicture/0.jpg" alt="返回主页" /></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="https://www.cnblogs.com/nancyzhu/">nancy05</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/nancyzhu/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/nancy05">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/nancyzhu/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="https://www.cnblogs.com/nancyzhu/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 45&nbsp; </span>
+<span id="stats_article_count">文章 - 1&nbsp; </span>
+<span id="stats-comment_count">评论 - 2</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class = "post">
+		<h1 class = "postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/nancyzhu/p/8146408.html">Python 文件操作</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>文件操作三部曲：打开 -&gt; 操作 -&gt; 关闭。</p>
+<h2>一. 文件操作, 常用的几种模式：</h2>
+<p><img src="/home/hcuuser/BeautifulPicture/1.jpg" alt="" height="260"></p>
+<p><span style="color: #000000">如果打开文件，没有指定操作方式，默认是读取；</span></p>
+<p><span style="color: #000000">对于r/r+，如果文件不存在会报错，使用时需要保证文件存在；</span></p>
+<p><span style="color: #000000">对于w/w+，如果使用它们，每次运行文件内容都会被覆盖；</span></p>
+<p><span style="color: #000000">对a/a+，这种方式会追加内容，因此指针在结尾。</span></p>
+<p><strong><span style="color: #000000">对于rb, wb, ab 是二进制的方式操作，可以应用于图片、视频。</span></strong></p>
+<p><span style="color: #ff0000"><em><strong>* 注意：当文件操作方式是a 或者a+ 时，文件指针在结尾，如果想要读取文件内容，记得修改指针的位置， f.seek(0) 这是将文件指针放在文件开始的地方。</strong></em></span></p>
+<h2><span>二. 文件的几种操作方法：</span></h2>
+<p>f.seek(), f.read(), f.readline(), f.readlines(), f.close(),&nbsp;f.write(), f.writelines(), f.truncate(), f.flush()</p>
+<h3><strong>1. 以读取"test"文件为例，对文件各种进行读取的操作：</strong></h3>
+<p><img src="/home/hcuuser/BeautifulPicture/2.jpg" alt="" height="150"></p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080"> 1</span> f = open(<span style="color: #800000">'</span><span style="color: #800000">test</span><span style="color: #800000">'</span>,<span style="color: #800000">'</span><span style="color: #800000">a+</span><span style="color: #800000">'</span>,encoding=<span style="color: #800000">'</span><span style="color: #800000">utf-8</span><span style="color: #800000">'</span><span style="color: #000000">) # 打开文件“test”，往文件中追加内容
+</span><span style="color: #008080"> 2</span> f.seek(0)<span style="color: #008000">#</span><span style="color: #008000">将文件指针放在文件开始</span>
+<span style="color: #008080"> 3</span> <span style="color: #0000ff">print</span>(<span style="color: #800000">'</span><span style="color: #800000">read(): 读取文件里面的全部内容</span><span style="color: #800000">'</span><span style="color: #000000">)
+</span><span style="color: #008080"> 4</span> <span style="color: #0000ff">print</span><span style="color: #000000">(f.read())
+</span><span style="color: #008080"> 5</span> <span style="color: #000000">f.seek(0)
+</span><span style="color: #008080"> 6</span> <span style="color: #0000ff">print</span>(<span style="color: #800000">'</span><span style="color: #800000">readline() : 只读取一行的内容</span><span style="color: #800000">'</span><span style="color: #000000">)
+</span><span style="color: #008080"> 7</span> <span style="color: #0000ff">print</span><span style="color: #000000">(f.readline())
+</span><span style="color: #008080"> 8</span> <span style="color: #008000">#</span><span style="color: #008000">f.seek(0) #不加这行的话f.readlines()会输出剩余的内容</span>
+<span style="color: #008080"> 9</span> <span style="color: #0000ff">print</span>(<span style="color: #800000">'</span><span style="color: #800000">readlines(): 读取文件里面的全部内容,把文件里面每一行的内容放到一个list里</span><span style="color: #800000">'</span><span style="color: #000000">)
+</span><span style="color: #008080">10</span> <span style="color: #0000ff">print</span><span style="color: #000000">(f.readlines())
+</span><span style="color: #008080">11</span> f.close() <span style="color: #008000">#</span><span style="color: #008000"> 打开文件后记得关闭文件</span></pre>
+</div>
+<p>这是对应的读取结果：</p>
+<p><img src="/home/hcuuser/BeautifulPicture/3.jpg" alt="" height="520"></p>
+<h3>&nbsp;2. 循环读取文件： next()</h3>
+<p>Python 3 中的 File 对象不支持&nbsp;next()&nbsp;方法。 Python 3 的内置函数 next() 通过迭代器调用 __next__() 方法返回下一项。 在循环中，next()方法会在每次循环中调用，该方法返回文件的下一行，如果到达结尾(EOF),则触发&nbsp;<em>StopIteration</em></p>
+<p><em><img src="/home/hcuuser/BeautifulPicture/4.jpg" alt="" height="360"></em></p>
+<h3>3. 高效读取文件的方式：for f in fw:</h3>
+<div class="cnblogs_code">
+<pre><span style="color: #008080">1</span> fw = open(<span style="color: #800000">'</span><span style="color: #800000">test</span><span style="color: #800000">'</span>,encoding=<span style="color: #800000">'</span><span style="color: #800000">utf-8</span><span style="color: #800000">'</span><span style="color: #000000">)
+</span><span style="color: #008080">2</span> count =1
+<span style="color: #008080">3</span> <span style="color: #008000">#</span><span style="color: #008000">直接循环文件对象的话，就是循环文件里面的每一行</span>
+<span style="color: #008080">4</span> <span style="color: #0000ff">for</span> f <span style="color: #0000ff">in</span><span style="color: #000000"> fw:
+</span><span style="color: #008080">5</span>     <span style="color: #0000ff">print</span>(<span style="color: #800000">'</span><span style="color: #800000">第%s行</span><span style="color: #800000">'</span> %<span style="color: #000000">count,f)
+</span><span style="color: #008080">6</span>     count+=1
+<span style="color: #008080">7</span> fw.close()    </pre>
+</div>
+<h3><strong>4. 下面是写入文件，刷新缓冲区，清空文件的操作：</strong></h3>
+<p>仍然以上面的test 文件为例，</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080"> 1</span> f = open(<span style="color: #800000">'</span><span style="color: #800000">test</span><span style="color: #800000">'</span>,<span style="color: #800000">'</span><span style="color: #800000">a+</span><span style="color: #800000">'</span>,encoding=<span style="color: #800000">'</span><span style="color: #800000">utf-8</span><span style="color: #800000">'</span>)<span style="color: #008000">#</span><span style="color: #008000"> 打开文件“test”，往文件中追加内容</span>
+<span style="color: #008080"> 2</span> f.write(<span style="color: #800000">'</span><span style="color: #800000">apple</span><span style="color: #800000">'</span>+ <span style="color: #800000">'</span><span style="color: #800000">\n</span><span style="color: #800000">'</span>)<span style="color: #008000">#</span><span style="color: #008000">f.write()写入的需为字符串, \n 为写入换行</span>
+<span style="color: #008080"> 3</span> tu=(<span style="color: #800000">'</span><span style="color: #800000">dds</span><span style="color: #800000">'</span>,<span style="color: #800000">'</span><span style="color: #800000">ttt</span><span style="color: #800000">'</span>,<span style="color: #800000">'</span><span style="color: #800000">iii</span><span style="color: #800000">'</span><span style="color: #000000">)
+</span><span style="color: #008080"> 4</span> f.writelines(tu)<span style="color: #008000">#</span><span style="color: #008000">写的时候，传入一个可迭代的对象</span>
+<span style="color: #008080"> 5</span> f.write(<span style="color: #800000">'</span><span style="color: #800000">\n</span><span style="color: #800000">'</span><span style="color: #000000">)
+</span><span style="color: #008080"> 6</span> <span style="color: #0000ff">print</span>(f.tell())<span style="color: #008000">#</span><span style="color: #008000">返回文件当前位置。</span>
+<span style="color: #008080"> 7</span> f.flush()<span style="color: #008000">#</span><span style="color: #008000">刷新文件内部缓冲，直接把内部缓冲区的数据立刻写入文件, 而不是被动的等待输出缓冲区写入。</span>
+<span style="color: #008080"> 8</span> <span style="color: #000000">f.seek(0)
+</span><span style="color: #008080"> 9</span> <span style="color: #0000ff">print</span><span style="color: #000000">(f.read())
+</span><span style="color: #008080">10</span> f.truncate(10)<span style="color: #008000">#</span><span style="color: #008000">截取指定长度</span>
+<span style="color: #008080">11</span> <span style="color: #000000">f.seek(0)
+</span><span style="color: #008080">12</span> <span style="color: #0000ff">print</span><span style="color: #000000">(f.read())
+</span><span style="color: #008080">13</span> <span style="color: #008000">#</span><span style="color: #008000">f.truncate()#清空文件内容</span>
+<span style="color: #008080">14</span> f.close()<span style="color: #008000">#</span><span style="color: #008000"> 打开文件后记得关闭文件</span></pre>
+</div>
+<p>这是对应的结果：</p>
+<p><img src="/home/hcuuser/BeautifulPicture/5.jpg" alt="" height="570"></p>
+<h3>&nbsp;5.&nbsp; with 操作文件，自动关闭文件</h3>
+<p>在操作文件的时候，经常忘了关闭文件，这样的就可以使用with，它会在使用完这个文件句柄之后，自动关闭该文件。</p>
+<p>具体使用如下：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080">1</span> with open(<span style="color: #800000">'</span><span style="color: #800000">test</span><span style="color: #800000">'</span>, <span style="color: #800000">'</span><span style="color: #800000">r+</span><span style="color: #800000">'</span><span style="color: #000000">) as f:
+</span><span style="color: #008080">2</span>     res =<span style="color: #000000"> f.read()
+</span><span style="color: #008080">3</span>     new_res = res.replace(<span style="color: #800000">'</span><span style="color: #800000">ttt</span><span style="color: #800000">'</span>, <span style="color: #800000">'</span><span style="color: #800000">nice</span><span style="color: #800000">'</span>) <span style="color: #008000">#</span><span style="color: #008000"> 替换 ttt -&gt; nice</span>
+<span style="color: #008080">4</span> <span style="color: #000000">    f.write(new_res)
+</span><span style="color: #008080">5</span> <span style="color: #000000">    f.flush()
+</span><span style="color: #008080">6</span> <span style="color: #000000">    f.seek(0)
+</span><span style="color: #008080">7</span>     <span style="color: #0000ff">print</span>(f.read())</pre>
+</div>
+<p><img src="/home/hcuuser/BeautifulPicture/6.jpg" alt="" height="420"></p>
+<p>&nbsp;用with 进行多文件的操作，具体如下：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080">1</span> with open(<span style="color: #800000">'</span><span style="color: #800000">test</span><span style="color: #800000">'</span>,<span style="color: #800000">'</span><span style="color: #800000">r+</span><span style="color: #800000">'</span><span style="color: #000000">) as fr:
+</span><span style="color: #008080">2</span>     with open(<span style="color: #800000">'</span><span style="color: #800000">test_new</span><span style="color: #800000">'</span>, <span style="color: #800000">'</span><span style="color: #800000">w+</span><span style="color: #800000">'</span>) as fw:  <span style="color: #008000">#</span><span style="color: #008000"> 这个是多文件的操作，打开两个文件，fr是读，fw是新建一个文件写</span>
+<span style="color: #008080">3</span>         <span style="color: #0000ff">for</span> line <span style="color: #0000ff">in</span> fr:  <span style="color: #008000">#</span><span style="color: #008000"> 循环test 文件中的每一行</span>
+<span style="color: #008080">4</span>             new_line = line.replace(<span style="color: #800000">'</span><span style="color: #800000">hello</span><span style="color: #800000">'</span>, <span style="color: #800000">'</span><span style="color: #800000">good</span><span style="color: #800000">'</span><span style="color: #000000">)
+</span><span style="color: #008080">5</span>             fw.write(new_line)  <span style="color: #008000">#</span><span style="color: #008000"> 写到test_new文件中</span>
+<span style="color: #008080">6</span>             </pre>
+</div>
+<div class="cnblogs_code">
+<pre>with open(<span style="color: #800000">'</span><span style="color: #800000">a.txt</span><span style="color: #800000">'</span>,<span style="color: #800000">'</span><span style="color: #800000">w</span><span style="color: #800000">'</span>) as f, open(<span style="color: #800000">'</span><span style="color: #800000">b.txt</span><span style="color: #800000">'</span>,<span style="color: #800000">'</span><span style="color: #800000">w</span><span style="color: #800000">'</span>) as fw: <span style="color: #008000">#</span><span style="color: #008000">打开多个文件</span>
+    f.write(<span style="color: #800000">'</span><span style="color: #800000">sss</span><span style="color: #800000">'</span><span style="color: #000000">)
+    fw.write(</span><span style="color: #800000">'</span><span style="color: #800000">rrrr</span><span style="color: #800000">'</span>)</pre>
+</div>
+<p>&nbsp;</p>
+<p>以上是对文件操作的总结。</p>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+		</div>
+		<div class = "postDesc">posted @ <span id="post-date">2018-01-02 20:46</span> <a href='https://www.cnblogs.com/nancyzhu/'>nancy05</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="https://i.cnblogs.com/EditPosts.aspx?postid=8146408" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(8146408);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=400704,cb_entryId=8146408,cb_blogApp=currentBlogApp,cb_blogUserGuid='3f83d736-36a6-e111-aa3f-842b2b196315',cb_entryCreatedDate='2018/1/2 20:46:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<div id='cnblogs_c1' class='c_ad_block'></div>
+<div id='under_post_news'></div>
+<div id='cnblogs_c2' class='c_ad_block'></div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright &copy;2018 nancy05
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+</body>
+</html>
