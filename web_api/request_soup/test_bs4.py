@@ -1,7 +1,7 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
 from bs4 import BeautifulSoup
 import requests,os
-targetDir = '/home/hcuuser/BeautifulPicture'  #设置图片要存放的文件目录
+targetDir = '/Users/jack/Desktop/BeautifulPicture'  #设置图片要存放的文件目录
 if not os.path.isdir(targetDir):#不存在创建路径
     os.mkdir(targetDir)
 url = 'http://www.cnblogs.com/nancyzhu/p/8146408.html'
