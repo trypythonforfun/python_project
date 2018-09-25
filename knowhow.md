@@ -19,3 +19,7 @@ wm = pygal.maps.world.World()
 解决办法，在home文件夹建立虚拟环境，不要在共享目录建环境
 python3 -m venv ll_env
 按照提示可能需要安装sudo apt-get install python3-venv
+
+##### html = urlopen('http://en.wikipedia.org/wiki/Kevin_Bacon')报错
+opener.open(url, data, timeout)
+变更为https，浏览器可以直接跳转，urlopen会报错
