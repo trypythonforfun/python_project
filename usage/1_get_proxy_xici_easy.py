@@ -85,7 +85,7 @@ def save_json():
     proxy_dictionary['http'] = valid_proxy_list_http
     proxy_dictionary['https'] = valid_proxy_list_https
     jsObj = json.dumps(proxy_dictionary, indent=4)
-    proxy_file = open('proxy.json', 'w')
+    proxy_file = open('proxy1.json', 'w')
     proxy_file.write(jsObj)  
     proxy_file.close() 
 
