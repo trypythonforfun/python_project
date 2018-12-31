@@ -28,10 +28,10 @@ my_headers = [
 
 def use_json():
     global json_dict
-    proxy_dictionary = {}
-    proxy_dictionary['http'] = valid_proxy_list_http
-    proxy_dictionary['https'] = valid_proxy_list_https
-    jsObj = json.dumps(proxy_dictionary, indent=4)
+    # ~ proxy_dictionary = {}
+    # ~ proxy_dictionary['http'] = valid_proxy_list_http
+    # ~ proxy_dictionary['https'] = valid_proxy_list_https
+    # ~ jsObj = json.dumps(proxy_dictionary, indent=4)
     with open('proxy1.json', 'r') as proxy_file:
         json_dict = json.loads(proxy_file.read())
     
